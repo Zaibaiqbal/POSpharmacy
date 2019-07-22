@@ -38,22 +38,22 @@
         <ul class="text-center mt-3">
            
                      <li class="col-md-2 mr-3">
-                         <a href="{{url('addproduct')}}">
-                        <img src="images/item.png" alt= "image1" width="110" height="90"> </a>
+                         <a href="{{url('/addproduct')}}">
+                        <img src="../images/item.png" alt= "image1" width="110" height="90"> </a>
                         <figcaption>ITEM</figcaption>
                       </li>
            
            
             <li class="col-md-2 mr-3">
-                    <a href="{{url('sales_form')}}">
-              <img src="images/Sale.png" alt= "image2" width="105" height="90"> </a>
+                    <a href="{{url('pages/sales_form')}}">
+              <img src="../images/Sale.png" alt= "image2" width="105" height="90"> </a>
               <figcaption>SALE</figcaption>
             </li>
             
         
             <li class="col-md-2 mr-3">
-                    <a href="purchase_form.html">
-              <img src="images/purchase.png" alt= "image3" width="105" height="90"> </a>
+                    <a href="{{url('pages/addpurchase')}}">
+              <img src="../images/purchase.png" alt= "image3" width="105" height="90"> </a>
               <figcaption>PURCHASE</figcaption>
             </li>
         
@@ -72,10 +72,10 @@
                   <ul>
 
                     <li>
-                           <a href="dashboard.html"> <button class="btn btn-info col-md-12 mb-2">Dashboard</button></a>
+                           <a href="{{url('/home')}}"> <button class="btn btn-info col-md-12 mb-2">Dashboard</button></a>
                     </li>
                     <li>
-                           <a href="supplier.html"> <button class="btn btn-info col-md-12 mb-2">Add Supplier</button> </a>
+                           <a href="{{url('addsupplier')}}"> <button class="btn btn-info col-md-12 mb-2">Add Supplier</button> </a>
                         </li>
                         <li>
                               <a href="stocklevel.html">  <button class="btn btn-info col-md-12 mb-2">Stock Info</button> </a>
@@ -84,18 +84,18 @@
                                     
                                     <li>
            
-                                      <a href="supplier-list.html"> <button class="btn btn-info col-md-12 mb-2">Supplier list</button></a>
+                                      <a href="{{url ('pages/supplier-list' )}}"> <button class="btn btn-info col-md-12 mb-2">Supplier list</button></a>
   
                                   </li>  
                                 
-                                  <a href="purchase-list.html"> <button class="btn btn-info col-md-12 mb-2">Purchase invoice list</button></a>
+                                  <a href="{{url ('pages/purchase_list' )}}"> <button class="btn btn-info col-md-12 mb-2">Purchase invoice list</button></a>
                                 <li>
                                     </li>
                                     <li>
-                                      <a href="product-list.html"> <button class="btn btn-info col-md-12 mb-2">Product list</button> </a>
+                                      <a href="{{url ('pages/product_list' )}}"> <button class="btn btn-info col-md-12 mb-2">Product list</button> </a>
                                     </li>
                                     <li>
-                                        <a href="supplier-profile.html">  <button class="btn btn-info col-md-12 mb-2">Supplier Profile</button> </a>
+                                        <a href="{{url ('pages/supplierprofile' )}}">  <button class="btn btn-info col-md-12 mb-2">Supplier Profile</button> </a>
                                       </li>
                   </ul>
 

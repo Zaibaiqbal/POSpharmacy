@@ -15,12 +15,14 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('product_id');
-            $table->unsignedInteger('transaction_id')->nullable();
+       
+            $table->unsignedInteger('product_id')->nullable();
             $table->string('product_name')->nullable();
+            $table->date('trans_date')->default(date("Y-m-d H:i:s"));
+            $table->unsignedInteger('transaction_id')->nullable();
             $table->unsignedInteger('sell_price')->nullable();
-            $table->unsignedInteger('qty')->nullable();
+            $table->unsignedInteger('quantity')->nullable();
+            $table->unsignedInteger('subtotal')->nullable();
             $table->timestamps();
         });
     }

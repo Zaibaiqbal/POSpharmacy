@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->string('exp_date');
             $table->unsignedInteger('quantity');
             $table->string('product_desc')-> nullable();
-            $table->unsignedInteger('supplier')->nullable();
+            $table->unsignedInteger('supplier_name')->nullable();
             $table->timestamps();
         });
     }

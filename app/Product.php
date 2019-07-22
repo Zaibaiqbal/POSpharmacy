@@ -9,7 +9,7 @@ class Product extends Model
     
 protected $fillable = [
 
-'product_id' ,'product_name','type' ,'cost_price','sell_price','exp_date' ,'quantity' ,'invoice_id' , 'product_desc', 'supplier'
+'product_id' ,'product_name','type' ,'cost_price','sell_price','exp_date' ,'quantity' ,'invoice_id' , 'product_desc', 'supplier_name'
 
 ];
     protected $dates = ['deleted_at'];

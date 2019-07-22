@@ -19,7 +19,27 @@
             </div>
         </div>
                     </header>
-  
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+                <a href="invoices.php" class="btn btn-success add_new_pro_btn"><i class="fa fa-eye"></i>View Invoices</a>
+                <a href="products.php" class="btn btn-info back_btn">Back</a>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
   
      <div class="container mt-5">
                       

@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+@extends('master')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Purchase list</title>
-    <link rel="stylesheet" href="css/final.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.js"></script>
-    <script src="js/projectscript.js"></script>
-    <script src="scripts/jquery-3.3.1.min.js"> </script>
-   
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+@section('title' ,'Supplier List')
 </head>
 <body style="background-color: #d3d3d3; color: rgb(4, 8, 12)">
+@section('content')
    <header id="main-header " style="height: 50px; font-size: 30px;" class="py-2 bg-secondary text-info pb-1">
         <div class=" container">
             <div class="row">
@@ -28,24 +15,39 @@
             </div>
         </div>
                     </header>
-  
+
+
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+            <a href="{{url('/addsupplier')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-plus"></i>Add Supplier</a>
+                <a href="{{url('/admin')}}" class="btn btn-info back_btn">Back</a>
+            </div>
+        </div>
+        </div>
+        </div>
+
+  <!--Body-->
                     <div class="container mt-5">
                         <div class="row">
         
                             <div class="col-md-12">
-                                <div class="purchase-form mb-3 mt-3">
-                                    <div class="row">
+                                <div class="purchase-form mb-1 mt-3">
+                                    
+                                    <form action="" method="" style="" class="form-group invoice-detail">
                                     <h3>View all Supplier</h3>
-                                    <form action="" style="float:right; margin-left:600px;" class="form-group invoice-detail">
-                                        <div class="input-group">
-                                        <input type="search">
-                                        <button value="search" class="btn btn-dark ml-0"> <i class="fa fa-search"></i>
-
-                                        </button>
-                                    </div>
-                                    </form>
-                                </div>
-                                    <div class="row mb-3">
+                                
+                                    <div class="row mb-1">
                                         <div class="col-md-12">
                                             <center>
                                                  <button class="btn btn-secondary hidden-print" onclick="myFunction()">
@@ -58,72 +60,69 @@
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-<table class="table table-bordered table-hover">
+                                    @if(session('message'))
+
+<p class="alert alert-success"> {{session('message')}} </p>
+@endif
+                            <!--Table start-->
+                            <div class="purchase-table"  style="overflow:hidden">
+                                    <table class="table table-bordered table-hover">
+                                    {{csrf_field()}}
                                                 <thead>
                                                   <tr>
-                                                   <th class="">Sr #</th>
+                                                   
                                                    <th>Supplier id</th>
-                                                   <th>Supplier name</th>
-                                                   <th>Mobile</th>
-                                                   <th>Product</th>
-                                                   <th>Created at</th>
-                                                   <th>Created by</th>
+                                                   <th>Name</th>
+                                                   <th>Address</th>
+                                                   <th>City</th>
+                                                   <th>Postal code</th>
+                                                   <th>Tel no</th>
+                                                   <th>Product ID</th>
+                                                   <th>Email</th>
                                                    <th>Profile</th>
                                                    <th>Edit</th>
                                                    <th>Delete</th>
                                                   </tr>
                                                 </thead>
+
                                                 <tbody>
+                                                @foreach($suppliers as $supplier)
                                                   <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    
-                                                    <td></td>
-                                                    <td> <button class="btn btn-primary"><i class="fa fa-user"  style="color:rgb(86, 240, 176)"></i></button></td>
-                                                    <td> <button class="btn btn-info"><i class="fa fa-edit"  style="color:rgb(86, 86, 240)"></i></button></td>
-                                                    <td> <button class="btn btn-light"><i class="fa fa-trash" style="color:red"></i></button></td>
-                                                  </tr>
-                                                  <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        
-                                                      </tr>
-                                                      <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        
-                                                      </tr>
-                                                </tbody>
+                                                    <td>{{$supplier->supplier_id}}</td>
+                                                    <td>{{$supplier->supplier_name}}</td>
+                                                    <td>{{$supplier->address}}</td>
+                                                    <td>{{$supplier->postal_code}}</td>
+                                                    <td>{{$supplier->city}}</td>
+                                                    <td>{{$supplier->tel_no}}</td>
+                                                    <td>{{$supplier->product_id}}</td>
+                                                    <td>{{$supplier->email}}</td>
+                        <td> <a href="{{url('pages/profiles/' .$supplier->id)}}" class="btn btn-info"> 
+                        
+                        <i class="fa fa-user"> View </i>    </td>
+                                                
+                                               <td> <a href="{{url('pages/' .$supplier->id . '/editsupplier/')}}"
+                                                         class="btn btn-info"> <i class="fa fa-edit">Edit </i> </td> 
+                         
+                                                         
+                                                    <td> 
+                                                    <a href="{{url('pages/' .$supplier->id . '/supplier-list/')}}"
+                                                         class="btn btn-info"> <i class="fa fa-trash"> Delete </i>
+                                                    </td>
+                                                   
+                                                
+                                                  @endforeach
+                                   </tbody>
                                         </table>
 
                                         </div>
                                     </div>
-                                        
-                                </div>
-                            </div>
-                        </div>
+                                    </div >
+                                   <!--end of table-->     
+
+                                   </form>
+                               
+
                     </div>
+                    @endsection 
                     </body>
 </html>

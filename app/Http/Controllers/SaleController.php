@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Product;
 use App\Sale;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
 {
+
+    public function __construct(){
+
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +29,7 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+       // return view('pages.sales_form');
     }
 
     /**
@@ -35,7 +40,23 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+         $created=Sale::create([
+
+            'product_id'=> $request->product_id ,
+            'product_name'=>$request->product_name, 
+            'trans_date'=>$request->trans_date , 
+            'transaction_id'=>$request->transaction_id, 
+            'sell_price'=>$request->sell_price ,
+             'quantity'=>$request->quantity , 
+             'subtotal'=>$request->subtotal 
+             
+        ]);
+
+        if($created){
+            return redirect('pages/sales_form')->with ('message' , 'Sales Added successfully');
+        }
     }
 
     /**
@@ -82,4 +103,21 @@ class SaleController extends Controller
     {
         //
     }
+
+  public function search(Request $request){
+
+       
+
+         $productName= $request['productName'];
+        $products= Product::where('product_name', 'LIKE' , '%' .$productName. '%')->get();
+        return view('pages.sales_form' , compact('products'));
+
+           
+   
+    }
+
+
 }
+
+
+

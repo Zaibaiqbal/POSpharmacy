@@ -29,4 +29,12 @@ return view('pages.staff-registration');
                                    
                                        }
 
+       public function addsupplier(){
+       return view('pages.addsupplier');
+                                                                    
+                           }
+                           
+      
+ 
+
 }

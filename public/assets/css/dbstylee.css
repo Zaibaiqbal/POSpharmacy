@@ -1,0 +1,9 @@
+    .main-panel {
+        background-image: url(../img/bd.jpg);
+        background-repeat: no-repeat;
+        width: 100%;
+
+    }
+    .nav-item img {
+        border-radius: 4em;
+    }

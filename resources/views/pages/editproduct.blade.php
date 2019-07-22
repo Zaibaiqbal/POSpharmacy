@@ -19,20 +19,39 @@
             </div>
         </div>
                     </header>
-  
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+                <a href="invoices.php" class="btn btn-success add_new_pro_btn"><i class="fa fa-eye"></i>View Invoices</a>
+                <a href="products.php" class="btn btn-info back_btn">Back</a>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
     
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <form action="{{url('/addproduct')}}" method="POST">
+        <form action="{{url('pages/updateproduct')}}" method="post">
             <div class="purchase-form p-4">
              <div class="row">  <div class="col-md-12">
              <center> <h3> Product Info: {{$products->product_name}}  </h3></center> </div> </div>
-            @if(session('message'))
 
-            <p class="alert alert-success"> {{session('message')}} </p>
-            @endif
-            {{csrf_field()}}
+
+{{csrf_field()}}
+            <input  type="hidden" name="id"  value="{{ $products->id }}" />
              <div class="row">  <div class="col-md-12"> 
                  <div class="invoice-detail p-3"> 
                      <div class="row">
@@ -108,7 +127,7 @@
             <div class="container">
 
                         <div class="row ml-5 mt-3">
-                            <button class=" col-md-1 btn btn-info btn-sm p-2"> <i class="fa fa-save mr-2"></i>Save</button> 
+                            <button type="submit" class=" col-md-1 btn btn-info btn-sm p-2"> <i class="fa fa-save mr-2"></i>update</button> 
                             <button class=" col-md-1 btn btn-info btn-sm p-2"> <i class="fa fa-money mr-2"></i>Reset</button> 
                              
                         </div>

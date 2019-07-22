@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
-    use SoftDeletes;
+    protected $fillable = [
 
-    protected $dates = ['deleted_at'];
+        'product_name','type' ,'cost_price','exp_date' ,'quantity' ,'invoice_id', 'supplier_name' , 'date' , 'user_id'
+        
+        ];
+    
+        protected $dates = ['deleted_at'];
 }

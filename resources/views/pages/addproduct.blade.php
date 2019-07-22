@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+@extends('master')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Product</title>
+@section('title' ,'Add Product')
 </head>
 
 <body style="background-color: #d3d3d3; color: rgb(4, 8, 12)">
-@extends('master')
+
 
 @section('content')
 
@@ -16,11 +14,32 @@
         <div class=" container">
             <div class="row">
                     <div class="col-md-6">
-                            <p> <i class="fa fa-cog"></i> Add new product <p>
+                            <p> <i class="fa fa-cog"></i> Product <p>
                     </div>
             </div>
         </div>
                     </header>
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Product</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+                <a href="{{url('pages/product_list')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-eye"></i>View List</a>
+                <a href="{{url('/admin')}}" class="btn btn-info back_btn">Back</a>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
   
     
 <div class="container">
@@ -29,6 +48,14 @@
         <form action="{{url('/addproduct')}}" method="POST">
             <div class="purchase-form p-4">
              <div class="row">  <div class="col-md-12">
+             
+             @if($errors->any())
+        <div class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+        </div>
+                @endif
              <center> <h3> Product Info </h3></center> </div> </div>
             @if(session('message'))
 
@@ -68,7 +95,7 @@
                            <div class="col-md-2"> <input type="number" name="quantity"></div>
 
                            <div class="col-md-2 ml-5" >  <label for="" class="">Supplier:</label></div>
-                           <div class="col-md-4">  <select name="supplier" style="width:150px;">
+                           <div class="col-md-4">  <select name="supplier_name" style="width:150px;">
                             <option value=""></option>
                             <option value=""></option>
                             <option value=""></option>
@@ -88,8 +115,8 @@
                        </div>
                        <div class="row">
                         <div class="input-group mb-1 ml-2">
-                           <div class="col-md-4">  <label for="">Invoice id</label></div>
-                           <div class="col-md-2"> <input type="text" name="invoice_id"></div>
+                           <div class="col-md-5">  <label for="">Invoice id</label></div>
+                           <div class="col-md-4"> <input type="text" name="invoice_id"></div>
 
                         </div>
                               
@@ -98,7 +125,7 @@
                        <div class="row">
                         <div class="col-md-12 mb-1 mt-4">
                            <div class="col-md-4">  <label for="">Product Description:</label></div>
-                           <div class="col-md-8"> <textarea class="form-control" rows="5" cols="80"  name="product_desc"></textarea> </div>
+                           <div class="col-md-8" style="border= 1px solid black"> <textarea class="form-control" rows="5" cols="80"  name="product_desc"></textarea> </div>
 
                         </div>
                               

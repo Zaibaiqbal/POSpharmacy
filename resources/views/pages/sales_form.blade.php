@@ -17,6 +17,28 @@
             </div>
         </div>
                     </header>
+
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+                <a href="{{url('pages/saleslist')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-eye"></i>View Sales</a>
+                <a href="{{url('/admin')}}" class="btn btn-info back_btn">Back</a>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
   
 
     
@@ -29,12 +51,12 @@
 <h6>Employee Id: </h6> 
 <div class="row">
 <div class="col-md-9 ml-2">
-<form action="{{url( 'sales_form' )}}" method="POST">
+<form action="{{url( 'pages/sales_form' )}}" method="POST">
 {{csrf_field()}}
 <div class="input-group">
     <label for="">Medicine Name/ ID:</label>
         <input type="search" name="productName" class="form-control mb-2 " placeholder="Search Item Name or Id here...">
-        <button type="submit" class="btn btn-info mb-2" > <i class="fa fa-search"></i>search </button>
+        <button onclick="search();" class="btn btn-info mb-2" > <i class="fa fa-search"></i>search </button>
         
     </div>
     </form>
@@ -64,11 +86,11 @@
         
         <td>{{$product->product_id}}</td>
         <td> {{$product->product_name}}</td>
-        <td>{{$product->sell_price}}</td>
-        <td contenteditable="true"></td>
-        <td contenteditable="true">{{$product->sell_price * $product->qty}}</td>
+        <td class="sell_price"> {{$product->sell_price}}</td>
+        <td contenteditable="true" class="medicine_quantity"></td>
+        <td contenteditable="true" class="total_price" ></td>
          <td>
-              <span class="table-remove"><button type="button"
+              <span class="table-remove"><button type="reset"
                   class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
             </td> 
             
@@ -80,49 +102,42 @@
 </div>
 </div>
 <div class="col-md-5">
+
     <div class="right_sale_form">
+    
         <div class="row">
-                    <button class="form-control btn btn-dark col-md-4 offset-2 mb-2 ml-0" >Reset</button>
+        
+                    <button class="form-control btn btn-dark col-md-4 offset-2 mb-2 ml-0" type="reset">Reset</button>
                     <button class="form-control btn btn-info col-md-4 offset-2 mb-2 ml-2" >Add New</button>
                 </div>
                     <hr>
                     <div class="row">       
         <div class="input-group">
                     <div class="col-md-5 mb-2 mt-4"> <label>Transaction ID: </label> </div>
-                    <div class="col-md-4 mb-2 mt-4"><input type="text" name="Name" >
+                    <div class="col-md-4 mb-2 mt-4"><input type="text" name="transaction_id" >
                     </div>
                 </div>
             </div>
             <div class="row">
         <div class="input-group">
                     <div class="col-md-5 mb-2"> <label>Trans. Date: </label> </div>
-                    <div class="col-md-4 mb-2"><input type="text" name="Name" > </div>
+                    <div class="col-md-4 mb-2"><input type="date" name="trans_date" id="datepicker"> </div>
         </div>
     </div>
     
         <div class="row">
         <div class="input-group">
             <div class="col-md-5 mb-2"> <label>Cashier: </label> </div>
-            <div class="col-md-5 mb-2"><input type="text" name="Name" > </div>
+            <div class="col-md-5 mb-2"><input type="text" name="user_id" > </div>
         </div>
     </div>
-        <div class="row">
-        <div class="input-group">
-                <div class="col-md-5 mb-2"> <label>Discount: </label> </div>
-                <div class="col-md-6 mb-3" > <div class="input-group-addon">
-                    <span class="input-group-text" style="width: 40px; height: 35px;">Rp.
-                      <input type="text" style="height:35px; width: 135px;">
-                    </span>
-                </div>
-                 </div>
-            </div>
-        </div>
+        
         <div class="row">
             <div class="input-group">
                     <div class="col-md-5 mb-2"> <label>Sub Total: </label> </div>
                     <div class="col-md-6 mb-3" > <div class="input-group-addon">
                             <span class="input-group-text" style="width: 40px; height: 35px;">Rp.
-                        <input type="text" style="height:35px; width: 135px;">
+                        <input type="text" style="height:35px; width: 135px;" class="sub_total" name="subtotal">
                     </span>
                     </div>
                       </div>
@@ -133,7 +148,7 @@
                         <div class="col-md-12 mb-3" > 
                     <div class="input-group-prepend">
                         <span class="input-group-text" style="height: 75px; width: 55px;  margin-right: -16px;">Rp.  </span>
-                     <input type="text" style="height:75px; width: 300px;">
+                     <input type="text" class="grand_total" name="grandtotal" style="height:75px; width: 300px;">
                    
                              </div>
                                 </div>
@@ -148,7 +163,7 @@
 
     
 
-            <center>  <button class="form-control btn btn-success btn-lg btn-block col-md-12 mb-2 ml-0" >  Process Payment
+            <center>  <button class="form-control btn btn-success btn-lg btn-block col-md-12 mb-2 ml-0" onclick="store();">  Process Payment
 
               </button> </center>
     
@@ -156,8 +171,8 @@
 
             </div>
     
-    
-    </div>
+        </div>
+        </form>
 </div>
 </div>
     

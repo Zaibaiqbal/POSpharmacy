@@ -20,9 +20,9 @@ class CreateSuppliersTable extends Migration
                 $table->string('supplier_name');
                 $table->string('address');
                 $table->string('city');
-                $table->unsignedInteger('pin');
+                $table->unsignedInteger('postal_code');
                 $table->unsignedInteger('tel_no');
-                $table->unsignedInteger('fax_no')->nullable();
+                $table->unsignedInteger('product_id');
                 $table->string('email');
                 $table->timestamps();
             });

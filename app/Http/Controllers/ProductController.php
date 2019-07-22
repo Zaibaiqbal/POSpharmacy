@@ -21,8 +21,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products= Product::all();
-        return view('pages.product_list', compact('products'));
+        $products= Product::paginate(3);
+        return view('pages.product_list', compact('products'))->with('no', 1);
     }
 
 
@@ -86,25 +86,38 @@ public function save(Request $request)
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) //Product $product
-    {
-       
-       $products = Product::find($id);
-        
-        return view('pages.editproduct' , compact('products'));
-    }
 
-    /**
+
+     public function edit($id) //Product $product
+     {
+       
+       $products = Product::findOrFail($id);
+        
+         return view('pages.editproduct' , compact('products'));
+    }
+/**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request)
     {
-        //
-    }
+
+    
+        $id=$request->post("id");
+
+            $products = Product::findOrFail($id);
+        
+            $input = $request->all();
+        
+            $products->fill($input)->save();
+        
+          //  Session::flash('flash_message', 'Product successfully updated!');
+        
+          return redirect('/pages/product_list')->with ('message','Product updated successfully');
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -122,16 +135,16 @@ public function save(Request $request)
         }
 
     }
-     public function search(Request $request){
+    //  public function search(Request $request){
 
        
 
-         $productName= $request['productName'];
-         $products= Product::where('product_name', 'LIKE' , '%' .$productName. '%')->get();
-        return view('pages.sales_form' , compact('products'));
+    //     $productName= $request['productName'];
+    //       $products= Product::where('product_name', 'LIKE' , '%' .$productName. '%')->get();
+    //      return view('pages.sales_form' , compact('products'));
 
             
     
-    }
+    //  }
  }
 

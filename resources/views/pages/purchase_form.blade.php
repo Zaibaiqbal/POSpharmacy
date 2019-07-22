@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('master')
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Purchase</title>
-    <link rel="stylesheet" href="css/final.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.js"></script>
-    <script src="js/projectscript.js"></script>
-    <script src="scripts/jquery-3.3.1.min.js"> </script>
-   
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+@section('title' ,'Add Purchase')
+
 </head>
 <body style="background-color: #d3d3d3; color: rgb(4, 8, 12)">
-    <header id="main-header " style="height: 50px; font-size: 30px;" class="py-2 bg-secondary text-info pb-1">
+@section('content')
+    <header id="main-header " style="height: 50px; font-size: 30px;background:rgb(55, 71, 79);" class="py-2 text-info pb-1">
         <div class=" container">
             <div class="row">
                     <div class="col-md-6">
@@ -28,116 +15,114 @@
             </div>
         </div>
                     </header>
-   
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="purchase-form p-4">
-             <div class="row">  <div class="col-md-12"><center> <h3> Medicine Purchase </h3></center> </div> </div>
-             <div class="row">  <div class="col-md-12"> 
-                 <div class="invoice-detail p-3"> 
-                     <h4 class="mb-3">Invoice details</h4> 
-                     <div class="row">
-                         <div class="input-group mb-1">
+
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+                <a href="{{url('pages/purchaselist')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-eye"></i>View Invoices</a>
+                <a href="{{url('/admin')}}" class="btn btn-info back_btn">Back</a>
+
+            </div>
+        </div>
+        </div>
+        </div>
+
+  <!-- Content Wrapper. Contains page content -->
+ 
+    <!-- Main content -->
+    <section class="content">
+    
+      <div class="col-md-12">
+        <div class="purchase-form">
+          
+            <form  action="{{url('pages/addpurchase')}}" method="post" >
+            
+                <div class="row">
+        <div class="col-md-11 invoice-detail ml-5"> 
+        <div class="row">
+                         <div class="input-group mb-1 mt-2">
                             <div class="col-md-2">  <label for="">Invoice Id:</label></div>
-                            <div class="col-md-2"> <input type="text" class="" style="width:60px;"></div>
-                            <div class="col-md-2 ml-5">  <label for="" class="">Supplier Name:</label></div>
-                            <div class="col-md-5"> <input type="text" class=""></div>
+                            <div class="col-md-2"> <input type="text" class=""  name="invoice_id"></div>
+
+                            <div class="col-md-2 ml-3 ">  <label for="" class="">Supplier Name:</label></div>
+                            <div class="col-md-2"> <input type="text" class="" name="supplier_name"></div>
 
                         </div>
                    </div>
+
                    <div class="row">
                         <div class="input-group mb-1">
                            
-                           <div class="col-md-2">  <label for="" class="">Bill Date:</label></div>
-                           <div class="col-md-5"> <input type="date" class=""></div>
-
-                       </div>
-                  </div>
-                  <div class="row">
-                        <div class="input-group mb-1">
-                           <div class="col-md-2">  <label for="">Select Product:</label></div>
-                           <div class="col-md-2"> <select name="p-name" id="" style="width:300px;">
-                               <option value=""></option>
-                               <option value=""></option>
-                               <option value=""></option>
-                           </select>
-                        </div>
+                           <div class="col-md-2">  <label for="" class="">Date:</label></div>
+                           <div class="col-md-3"> <input type="date" class="datepicker" name="date"></div>
                            
-                           <div class="col-md-2" style="margin-left: 150px;">  <label for="" class="">Invoice Total:</label></div>
-                           <div class="col-md-4"> <input type="number" class=""></div>
+                           <div class="col-md-2">  <label for="" class="">Created By:</label></div>
+                           <div class="col-md-3"> <input type="text" class="user_id" name=""></div>
 
                        </div>
                   </div>
-                 
-            </div> 
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="purchase-table mb-3">
-                                <table class="table table-bordered table-hover">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col-md-1">Sr #</th>
-                                            <th scope="col-md-1">Item code</th>
-                                            <th scope="col-md-1">Item Name</th>
-                                            <th scope="col-md-1">Type</th>
-                                        
-                                            <th scope="col-md-1">Qty. </th>
-                                            <th scope="col-md-1">Cost</th>
-                                            <th scope="col-md-1">Exp. date</th>
-                                            <th scope="col-md-1">Mfg. date</th>
-                                
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                          </tr>
-                                          <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                              </tr>
-                                        </tbody>
-                                </table>
-                        </div>
-                        <div class="row ml-5">
-                            <button class=" col-md-4 btn btn-info btn-sm p-2"> <i class="fa fa-money mr-2"></i>Buy</button> 
-                            
-                        </div>
-                    </div>
+                
+                <div class="col-md-6 submit-buttom">
+                    <input type="submit" value="Save Product" name="addproduct" class="btn btn-success">
+                    <input type="reset" value="Reset" class="btn btn-warning">
                 </div>
 
 
-            </div>
-        </div> 
-    </div> 
-           
-            </div>
+                <div class="col-md-12 purchase-table" style="margin-top: 20px;">
 
+                    <table id="invoice_form_table" class="table table-bordered">
+                        <thead>
+                            <tr>
+                            <th>Product Id</th>
+                            <th>Product name</th>
+                            <th>Type</th>
+                            <th>Exp. date</th>
+                            <th>Quantity</th>
+                            <th>Cost Price</th>
+                            <th>Subtotal</th>
+                                <th width="15%">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id="inv_detail">
+                            
+                        </tbody>
+                        <tfoot id="">
+                            <tr>
+                            
+                                <td colspan="5" style="text-align:right; "><b>Invoice Total</b></td>
+                                <td colspan="1" style="text-align: center;"><input type="hidden" name="addinvoice"><b class="wholetotal"></b></td>
+                                <input type="hidden" name="addpurchase">
+                            </tr>
+
+                        </tfoot>
+                    </table>
+                    <button class="btn btn-success add_new_invoice_table_row" title="Click To Add Product in Purchase List" style="font-size: 17px;">+</button>
+                </div>
         </div>
+      </div>
+    
+            
+            </form>
+          </div>
+        
+      </div>
+      
+    </section>
+    @endsection 
+    <!-- /.content -->
+  
+  <!-- /.content-wrapper -->
+ <!-- footer -->
 
-    </div>
-
-
-
-
-</div>
-
-
-</body>
-</html>
+ </body>

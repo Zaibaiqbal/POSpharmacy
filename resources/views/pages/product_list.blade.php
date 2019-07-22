@@ -2,9 +2,7 @@
 <html lang="en">
 @extends('master')
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
  @section('title' ,'Product list')
 </head>
 
@@ -16,11 +14,31 @@
         <div class=" container">
             <div class="row">
                     <div class="col-md-6">
-                            <p> <i class="fa fa-cog"></i> Product List <p>
+                            <p> <i class="fa fa-cog"></i> Product<p>
                     </div>
             </div>
         </div>
                     </header>
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Product List</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+            <a href="{{url('addproduct')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-plus"></i>Add Product</a>
+                <a href="{{url('admin')}}" class="btn btn-info back_btn">Back</a>
+            </div>
+        </div>
+        </div>
+        </div>
+
   
       <div class="container mt-5">
             <div class="row">
@@ -29,11 +47,34 @@
                  <form action="" method="POST" style="" class="form-group invoice-detail">
                                     
                    <h3 class="ml-2">View all Products</h3>
-                  <div class="purchase-table">
+                   <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <center>
+                                                 <button class="btn btn-secondary">
+                                                <span class="fa fa-print" aria-hidden="true"></span> </button> 
+                                                <button class="btn btn-secondary ml-0"> <i class="fa fa-file-pdf-o"  style="color:red"></i></button>
+                                                <button class="btn btn-secondary ml-0"> <i class="fa fa-file-excel-o"  style="color:rgb(56, 66, 56)"></i></button>
+                                            </center>
+                                                        
+
+                                        </div>
+
+                                    </div>
+                                    @if(session('message'))
+
+<p class="alert alert-success"> 
+    {{session('message')}} </p>
+            @endif
+                  <div class="purchase-table"  style="overflow:hidden">
                      <table class="table table-bordered table-hover">
+                    
                         {{csrf_field()}}
+
+                       
+
                               <thead>
                               <tr>
+                              <th>#</th>          
                     <th>Product id</th>
                   <th>Product name</th>
                    <th>Type</th>
@@ -42,18 +83,17 @@
                    <th>Invoice id</th>
                    <th>Expiry date</th>
                     <th>Quantity</th>
-                    
-                   <th>View</th>
+                     <th>View</th>
                     <th>Edit</th>
                   <th>Delete</th>
                   
                              </tr>
-                                                </thead>
+                                </thead>
                                                 <tbody>
                                                   
                                                 @foreach($products as $product)
                                                   <tr>
-                                                  
+                                                  <td>{{$no++}}</td>
                                                     <td>{{$product->product_id}}</td>
                                                     <td>{{$product->product_name}}</td>
                                                     <td>{{$product->type}}</td>
@@ -66,24 +106,27 @@
 
                                                     <td> 
                                                  <a href="{{url('pages/show/' .$product->id)}}"
-                                                         class="btn btn-info">view
+                                                         class="btn btn-info"><i class="fa fa-eye">view </i>
                                                 
                                                     </a>
                                                     </td>                                                    
                                                     <td> 
                                                     <a href="{{url('pages/' .$product->id . '/editproduct/')}}"
-                                                         class="btn btn-info">Edit
+                                                         class="btn btn-info"><i class="fa fa-edit">Edit </i>
                                                     </td>
 
                                                     <td> 
                                                     <a href="{{url('pages/' .$product->id . '/product_list/')}}"
-                                                         class="btn btn-info">Delete
-                                                   
+                                                         class="btn btn-info"> <i class="fa fa-trash">Delete </i>
+                                                    </td>
+
                                                   </tr>
                                                   @endforeach
                                                   
                                                 </tbody>
                                         </table>
+                                        <div>{{$products->links()}}</div>
+                                      
                                         </div>
                                         </div>
                                     </div>

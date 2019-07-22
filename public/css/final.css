@@ -41,7 +41,7 @@ h3{
   border-radius: .5em;
 }
 label{
-  color: white;
+  color: rgb(26, 24, 24);
 }
 span {
   color: yellow;
@@ -65,6 +65,9 @@ margin-top: 80px;
 border-radius: 1px;
 
 }
+.invoice-detail label,
+.sale_form label,
+.right_sale_form label,
 .detail_form label,
 .supplier-form label{
   color: rgb(22, 21, 21);
@@ -86,7 +89,7 @@ input[type=text]:focus {
 textarea{
   background-color: #b0b5bb;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #d6d8da;
   border-radius: 0.25rem;
 }
 
@@ -183,7 +186,9 @@ margin-left: 550px;
 }
 .sale_form input{
 margin-left: 5px;
-
+background-color:  #b0b5bb;
+ border: 1px solid #ced4da;
+    border-radius: 0.25rem;
 }
 .sale_form label{
   margin-left: -11px;
@@ -214,6 +219,7 @@ margin-left: 5px;
   
   }
   
+  
   .admin-icon{
 
     margin-left: -200px;
@@ -243,7 +249,7 @@ margin-left: 5px;
   border: 1px solid black;
   background-color: rgba(12, 79, 134, 0.6);
   border-radius: 1px;
-  padding: 20px;
+  padding: 10px;
   margin-top: 20px;
 
 }
@@ -260,6 +266,14 @@ margin-left: 5px;
   box-sizing: border-box;
   transition: .3s;
 }
+.invoice-detail textarea{
+  background-color: #b0b5bb;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
 .invoice-detail select{
   background-color: #b0b5bb;
   border: 1px solid #ced4da;
@@ -304,4 +318,65 @@ margin-left: 5px;
   border: 1px solid rgb(148, 148, 228);
   padding: 5px;
 
+}
+
+.icon{
+ margin-left: 5px;
+  
+}
+
+.icon li {
+  
+  
+  list-style: none;
+  background:white;
+}
+.icon li a
+{
+ 
+  color: black;
+
+  font-weight: 400px;
+}
+.icon li a:hover
+{
+  opacity: 0.5;
+  background-color: rgb(125, 125, 129);
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

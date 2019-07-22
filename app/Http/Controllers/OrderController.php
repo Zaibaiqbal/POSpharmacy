@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+
+    public function __construct(){
+        
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +19,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
+    //     $orders=Order::all();
+    //     return view('pages.purchase-list', compact('orders'));
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +30,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.purchase_form');
     }
 
     /**
@@ -35,7 +41,23 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created= Order::create([
+            
+            'product_name' => $request->product_name,
+            'type' => $request->type,
+            'cost_price' => $request->cost_price,
+            'exp_date' => $request->exp_date,
+            'quantity' => $request->quantity,
+            'invoice_id' => $request->invoice_id,
+            'user_id' => $request->user_id,
+            'supplier_name' => $request->supplier_name,
+            'date' => $request->date,
+           
+            ]);
+            
+            if($created){
+                return redirect('pages/addpurchase')->with ('message','Product added successfully');
+            }
     }
 
     /**

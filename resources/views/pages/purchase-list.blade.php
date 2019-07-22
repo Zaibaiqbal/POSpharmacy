@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Purchase list</title>
-    <link rel="stylesheet" href="css/final.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.js"></script>
-    <script src="js/projectscript.js"></script>
-    <script src="scripts/jquery-3.3.1.min.js"> </script>
-   
-    <script src="jquery/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</head>
+@extends('master')
+@section('title' ,'Purchase List')
+
+@section('content')
 <body style="background-color: #d3d3d3; color: rgb(4, 8, 12)">
    <header id="main-header " style="height: 50px; font-size: 30px;" class="py-2 bg-secondary text-info pb-1">
         <div class=" container">
@@ -28,6 +12,26 @@
             </div>
         </div>
                     </header>
+                    <div class="container mt-3">
+    <div class="content_section">
+
+        <div class="page_info p-1" style="background:black;">
+            <?php
+            if (isset($msg) && $msg != '') {
+                echo $msg;
+            }
+            ?>
+            <div class="page_info_left">
+                <h3><i class="fa fa-chevron-circle-right"></i>&nbsp;Add New Invoice</h3>
+            </div>
+            <div class="page_info_right" style="float:right; margin-top: -40px;">
+            <a href="{{url('pages/addpurchase')}}" class="btn btn-success add_new_pro_btn"><i class="fa fa-plus"></i>Add Invoice</a>
+                <a href="{{url('pages/purchaselist')}}" class="btn btn-info back_btn">Back</a>
+            </div>
+        </div>
+        </div>
+        </div>
+
   
                     <div class="container mt-5">
                         <div class="row">
@@ -60,7 +64,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
-<table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover">
                                                 <thead>
                                                   <tr>
                                                    <th class="">Sr #</th>
@@ -88,31 +92,7 @@
                                                     <td> <button class="btn btn-light"><i class="fa fa-edit"  style="color:rgb(86, 86, 240)"></i></button></td>
                                                     <td> <button class="btn btn-light"><i class="fa fa-trash" style="color:red"></i></button></td>
                                                   </tr>
-                                                  <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                      </tr>
-                                                      <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                      </tr>
-                                                </tbody>
+                                                 </tbody>
                                         </table>
 
                                         </div>
@@ -122,5 +102,6 @@
                             </div>
                         </div>
                     </div>
+                    @endsection 
                     </body>
 </html>
